@@ -1,0 +1,50 @@
+/*
+ * Copyright (c) 2024 kodomari
+ * SPDX-License-Identifier: MIT
+ */
+
+#include "kod_04.dtsi"
+
+&xiao_spi { status = "disabled"; };
+&xiao_i2c { status = "disabled"; };
+&xiao_serial { status = "disabled"; };
+
+/ {
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
+        diode-direction = "col2row";
+        
+        // 5行
+        row-gpios
+            = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+        
+        // 7列
+        col-gpios
+            = <&xiao_d 5 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 6 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 7 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 8 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 9 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 10 GPIO_ACTIVE_HIGH>
+            , <&gpio0 2 GPIO_ACTIVE_HIGH>  // P0.02 (A0/D0)
+            ;
+    };
+};
+
+// トラックポイント（PS/2インターフェース）
+&input_ps2 {
+    status = "okay";
+    scl-gpios = <&gpio0 29 GPIO_ACTIVE_HIGH>;  // CLK (カステレーテッド P0.29)
+    sda-gpios = <&gpio0 30 GPIO_ACTIVE_HIGH>;  // DATA (カステレーテッド P0.30)
+    
+    // トラックポイント設定
+    tp-sensitivity = <128>;
+    tp-inertia = <6>;
+    tp-speed = <128>;
+};

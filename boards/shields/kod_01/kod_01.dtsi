@@ -1,0 +1,34 @@
+/*
+ * kod_01.dtsi - 共通定義ファイル
+ * 左右両方のoverlayからincludeされる
+ */
+
+#include "layouts.dtsi"
+
+/ {
+    /* 
+     * エンコーダ定義（左手側に物理的に存在）
+     * デフォルトはdisabled、左側overlayでokayにする
+     */
+    left_encoder: left_encoder {
+        compatible = "alps,ec11";
+        a-gpios = <&akdk_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        b-gpios = <&akdk_d 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        steps = <80>;
+        status = "disabled";
+    };
+
+    /*
+     * センサーノード
+     * Central（右手）がエンコーダを認識するために必要
+     * 
+     * triggers-per-rotation: 1回転あたりの発火回数
+     *   小さい値 = 粗い（少ない回数で多くスクロール）
+     *   大きい値 = 細かい（多くの回数で少しずつスクロール）
+     */
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
+        triggers-per-rotation = <20>;
+    };
+};

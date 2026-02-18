@@ -35,21 +35,12 @@
             , <&gpio0 2 GPIO_ACTIVE_HIGH>  // P0.02 (A0/D0)
             ;
     };
-
-    // アナログスティック（ジョイスティック）
-    analog_stick {
-        compatible = "zmk,behavior-input-two-axis";
-        #binding-cells = <0>;
-        x-input-code = <INPUT_REL_X>;
-        y-input-code = <INPUT_REL_Y>;
-        
-        // 押しボタン（オプション）
-        trigger-key = <&gpio0 29 GPIO_ACTIVE_LOW>;  // カステレーテッド P0.29
-    };
 };
 
 // ADC設定（X軸、Y軸）
+// アナログジョイスティック用 - ドライバーは後で実装
 &adc {
+    status = "okay";
     #address-cells = <1>;
     #size-cells = <0>;
     

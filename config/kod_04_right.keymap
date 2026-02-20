@@ -1,16 +1,24 @@
 / {
-    keymap {
-        compatible = "zmk,keymap";
+  keymap {
+    compatible = "zmk,keymap";
 
-        default_layer {
-            bindings = <
-                /* 70 keys: 5 rows x 14 cols */
-                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-            >;
-        };
+    default_layer {
+      bindings = <
+        /* row 0: left(0-6) */  &trans &trans &trans &trans &trans &trans &trans
+        /* row 0: right(7-13)*/ &kp G   &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS &kp EQUAL
+
+        /* row 1: left(0-6) */  &trans &trans &trans &trans &trans &trans &trans
+        /* row 1: right(7-13)*/ &kp Y   &kp U   &kp I   &kp O   &kp P   &kp LBKT  &kp RBKT
+
+        /* row 2: left(0-6) */  &trans &trans &trans &trans &trans &trans &trans
+        /* row 2: right(7-13)*/ &kp H   &kp J   &kp K   &kp L   &kp SEMI &kp SQT   &kp ENTER
+
+        /* row 3: left(0-6) */  &trans &trans &trans &trans &trans &trans &trans
+        /* row 3: right(7-13)*/ &kp B   &kp N   &kp M   &kp COMMA &kp DOT &kp FSLH  &kp RSHFT
+
+        /* row 4: left(0-6) */  &trans &trans &trans &trans &trans &trans &trans
+        /* row 4: right(7-13)*/ &mkp LCLK &mkp MCLK &mkp RCLK &kp SPACE &kp BSLH &kp PSCRN &kp BSPC
+      >;
     };
+  };
 };

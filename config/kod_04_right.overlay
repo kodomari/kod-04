@@ -33,6 +33,7 @@ col-gpios
   , <&xiao_d 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
   ;
 };
+};
 
 
 // トラックポイントはコメントアウト（後で追加）

@@ -36,9 +36,15 @@ col-gpios
 };
 
 
-// トラックポイントはコメントアウト（後で追加）
-// &input_ps2 {
-//     status = "okay";
-//     scl-gpios = <&gpio0 XX GPIO_ACTIVE_HIGH>;  // CLK (後で決定)
-//     sda-gpios = <&gpio0 YY GPIO_ACTIVE_HIGH>;  // DATA (後で決定)
-// };
+// トラックポイント（PS/2インターフェース）
+&input_ps2 {
+    status = "okay";
+    scl-gpios = <&xiao_d 5 GPIO_ACTIVE_HIGH>;  // CLK: D5 (P0.05)
+    sda-gpios = <&xiao_d 6 GPIO_ACTIVE_HIGH>;  // DATA: D6 (P1.11)
+    
+    // トラックポイント設定
+    tp-sensitivity = <128>;   // 感度（0-255、デフォルト128）
+    tp-inertia = <6>;         // 慣性（0-255、デフォルト6）
+    tp-speed = <128>;         // 速度（0-255、デフォルト128）
+    tp-press-to-select = <0>; // Press-to-select無効（既にマウスボタンがある）
+};

@@ -33,7 +33,7 @@
         /* row1 */ &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U
         /* row2 */ &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J
         /* row3 */ &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M
-        /* row4 */ &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7
+        /* row4 */ &kp N8 &kp N9 &kp N0 &kp I  &kp K  &kp L  &kp P
       >;
     };
   };

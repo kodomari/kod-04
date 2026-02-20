@@ -24,15 +24,14 @@ row-gpios
   ;
 
 col-gpios
-  = <&gpio1 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* ←P1.05だけ固定 */
-  , <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-  , <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-  , <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-  , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-  , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-  , <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+  = <&gpio1 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+  , <&xiao_d 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+  , <&gpio1 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+  , <&xiao_d 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+  , <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+  , <&xiao_d 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+  , <&xiao_d 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
   ;
-};
 };
 
 

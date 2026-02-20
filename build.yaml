@@ -1,6 +1,7 @@
 # build.yaml
+---
 include:
-  - board: seeed_xiao_ble
+  - board: seeeduino_xiao_ble  # ← 修正（seeed → seeeduino）
     shield: kod_04_left
-  - board: seeed_xiao_ble
+  - board: seeeduino_xiao_ble  # ← 修正
     shield: kod_04_right

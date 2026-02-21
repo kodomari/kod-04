@@ -22,7 +22,7 @@
     compatible = "zmk,keymap";
 
     default_layer {
-      bindings = 
+      bindings = <
         // row0 (D6): ESC 1 2 3 4 5 6
         &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp N6
         // row1 (P0.09): TAB Q W E R T カーソル上
@@ -37,7 +37,7 @@
     };
 
     fn_layer {
-      bindings = 
+      bindings = <
         &trans &trans &trans &trans &trans &trans &trans
         &trans &trans &trans &trans &trans &trans &trans
         &trans &trans &trans &trans &trans &trans &trans

@@ -9,6 +9,11 @@
 &xiao_i2c { status = "disabled"; };
 &xiao_serial { status = "disabled"; };
 
+// NFC機能を無効化（P0.09/P0.10をGPIOとして使用）
+&nfc_pins {
+    status = "disabled";
+};
+
 / {
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
@@ -18,7 +23,7 @@
         // 5行
         row-gpios
           = <&xiao_d 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // D6
-          , <&gpio0 9   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // P0.09
+          , <&gpio0 9   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // P0.09 (NFC1)
           , <&gpio1 1   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // P1.01
           , <&gpio0 19  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // P0.19
           , <&gpio0 15  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // P0.15
@@ -32,7 +37,7 @@
           , <&xiao_d 3  GPIO_ACTIVE_HIGH>   // D3
           , <&xiao_d 4  GPIO_ACTIVE_HIGH>   // D4
           , <&xiao_d 5  GPIO_ACTIVE_HIGH>   // D5
-          , <&gpio0 10  GPIO_ACTIVE_HIGH>   // P0.10
+          , <&gpio0 10  GPIO_ACTIVE_HIGH>   // P0.10 (NFC2)
           ;
     };
 };

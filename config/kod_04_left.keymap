@@ -32,17 +32,7 @@
         // row3 (P0.19): LSHIFT Z X C V B カーソル左
         &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B     &kp LEFT
         // row4 (P0.15): FN Win ALT SPACE DEL カーソルプッシュ カーソル下
-        &mo 1     &kp LGUI  &kp LALT  &kp SPACE &kp DEL   &kp RET   &kp DOWN
-      >;
-    };
-
-    fn_layer {
-      bindings = <
-        &trans &trans &trans &trans &trans &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans
+        &kp CAPS &kp LGUI  &kp LALT  &kp SPACE &kp DEL   &kp RET   &kp DOWN
       >;
     };
   };

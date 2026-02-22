@@ -41,9 +41,9 @@
         scl-gpios = <&xiao_d 5 GPIO_ACTIVE_HIGH>;  // CLK: D5 (P0.05)
         sda-gpios = <&xiao_d 6 GPIO_ACTIVE_HIGH>;  // DATA: D6 (P1.11)
         
-        tp-sensitivity = <128>;
-        tp-inertia = <6>;
-        tp-speed = <128>;
+        tp-sensitivity = <255>;
+        tp-inertia = <10>;
+        tp-speed = <255>;
         tp-press-to-select = <0>;
     };
 };

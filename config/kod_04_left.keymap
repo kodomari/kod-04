@@ -23,16 +23,16 @@
 
     default_layer {
       bindings = <
-        // row0 (D6): ESC 1 2 3 4 5 6
-        &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp N6
-        // row1 (P0.09): TAB Q W E R T カーソル上
-        &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &kp UP
-        // row2 (P1.01): LCTRL A S D F G カーソル右
-        &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G     &kp RIGHT
-        // row3 (P0.19): LSHIFT Z X C V B カーソル左
-        &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B     &kp LEFT
-        // row4 (P0.15): FN Win ALT SPACE DEL カーソルプッシュ カーソル下
-        &kp CAPS &kp LGUI  &kp LALT  &kp SPACE &kp DEL   &kp RET   &kp DOWN
+        // row0 (D6): ESC 1 2 3 4 5 カーソルプッシュ
+        &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp RET
+        // row1 (P0.09): TAB Q W E R T カーソル下
+        &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &kp DOWN
+        // row2 (P1.01): LCTRL A S D F G カーソル左
+        &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G     &kp LEFT
+        // row3 (P0.19): LSHIFT Z X C V B カーソル右
+        &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B     &kp RIGHT
+        // row4 (P0.15): FN Win ALT SPACE DEL 6 カーソル上
+        &kp CAPS &kp LGUI  &kp LALT  &kp SPACE &kp DEL   &kp N6   &kp UP
       >;
     };
   };

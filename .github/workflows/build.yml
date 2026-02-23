@@ -33,7 +33,11 @@ jobs:
         run: west zephyr-export
 
       - name: Build left
-        run: west build -s zmk/app -b xiao_ble -- -DSHIELD=kod_04_left -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+        run: |
+          west build -s zmk/app -b xiao_ble -- \
+            -DSHIELD=kod_04_left \
+            -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" \
+            -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}"
 
       - name: Rename left artifact
         run: cp build/zephyr/zmk.uf2 kod_04_left-xiao_ble-zmk.uf2
@@ -41,7 +45,10 @@ jobs:
       - name: Build right
         run: |
           rm -rf build
-          west build -s zmk/app -b xiao_ble -- -DSHIELD=kod_04_right -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+          west build -s zmk/app -b xiao_ble -- \
+            -DSHIELD=kod_04_right \
+            -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" \
+            -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}"
 
       - name: Rename right artifact
         run: cp build/zephyr/zmk.uf2 kod_04_right-xiao_ble-zmk.uf2

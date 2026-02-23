@@ -1,10 +1,13 @@
 ---
 include:
   - board: xiao_ble
-    shield: kod_04_left
+    shield: kod_04
     cmake-args: >-
       -DSHIELD_ROOT=${GITHUB_WORKSPACE}/modules/kod-04
+      -DDTC_OVERLAY_FILE=${GITHUB_WORKSPACE}/modules/kod-04/boards/shields/kod_04/kod_04_left.overlay
+
   - board: xiao_ble
-    shield: kod_04_right
+    shield: kod_04
     cmake-args: >-
       -DSHIELD_ROOT=${GITHUB_WORKSPACE}/modules/kod-04
+      -DDTC_OVERLAY_FILE=${GITHUB_WORKSPACE}/modules/kod-04/boards/shields/kod_04/kod_04_right.overlay

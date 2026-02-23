@@ -2,5 +2,10 @@
 include:
   - board: xiao_ble
     shield: kod_04_left
+    cmake-args: >-
+      -DZMK_EXTRA_MODULES="/__w/kod-04/kod-04;/tmp/zmk-config/modules/kb_zmk_ps2_mouse_trackpoint_driver"
+
   - board: xiao_ble
     shield: kod_04_right
+    cmake-args: >-
+      -DZMK_EXTRA_MODULES="/__w/kod-04/kod-04;/tmp/zmk-config/modules/kb_zmk_ps2_mouse_trackpoint_driver"

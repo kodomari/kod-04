@@ -2,5 +2,9 @@
 include:
   - board: xiao_ble
     shield: kod_04_left
+    cmake-args: >-
+      -DSHIELD_ROOT=${GITHUB_WORKSPACE}/modules/kod-04
   - board: xiao_ble
     shield: kod_04_right
+    cmake-args: >-
+      -DSHIELD_ROOT=${GITHUB_WORKSPACE}/modules/kod-04

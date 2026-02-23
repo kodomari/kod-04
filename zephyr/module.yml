@@ -1,6 +1,3 @@
-name: kod_04
 build:
-  cmake: zephyr
-  kconfig: zephyr/Kconfig
   settings:
     board_root: .

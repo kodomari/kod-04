@@ -1,0 +1,10 @@
+menu "kod_04 module"
+
+config KB_ZMK_PS2_MOUSE_TRACKPOINT_DRIVER
+    bool "Enable PS/2 TrackPoint driver"
+    default n
+    depends on GPIO
+    help
+      Enable PS/2 TrackPoint driver.
+
+endmenu

@@ -35,25 +35,55 @@ jobs:
         run: |
           west build -s zmk/app -b xiao_ble -- \
             -DSHIELD=kod_04_right \
-            -DSHIELD_ROOT="${GITHUB_WORKSPACE}" \
             -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" \
             -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}/kb_zmk_ps2_mouse_trackpoint_driver"
 
+      # ========== デバッグステップ ==========
+      - name: Debug - Check Kconfig
+        if: always()
+        run: |
+          echo "=== Checking Kconfig symbols ==="
+          cat build/zephyr/.config | grep -i trackpoint || echo "No trackpoint config"
+          cat build/zephyr/.config | grep -i ps2 || echo "No ps2 config"
+          cat build/zephyr/.config | grep -i mouse || echo "No mouse config"
+          cat build/zephyr/.config | grep -i INPUT || echo "No INPUT config"
+          cat build/zephyr/.config | grep -i POINTING || echo "No POINTING config"
+          
+      - name: Debug - Check Devicetree
+        if: always()
+        run: |
+          echo "=== Checking Devicetree ==="
+          grep -n "trackpoint" build/zephyr/zephyr.dts || echo "No trackpoint in DTS"
+          grep -n "ps2" build/zephyr/zephyr.dts || echo "No ps2 in DTS"
+          grep -n "input_ps2" build/zephyr/zephyr.dts || echo "No input_ps2 in DTS"
+          
+      - name: Debug - Check module recognition
+        if: always()
+        run: |
+          echo "=== Checking if kb_zmk_ps2_mouse_trackpoint_driver exists ==="
+          ls -la kb_zmk_ps2_mouse_trackpoint_driver/ || echo "Driver directory not found"
+          ls -la kb_zmk_ps2_mouse_trackpoint_driver/zephyr/ || echo "No zephyr/ directory"
+          cat kb_zmk_ps2_mouse_trackpoint_driver/zephyr/module.yml || echo "No module.yml"
+      # =====================================
+
       - name: Rename right artifact
+        if: success()
         run: cp build/zephyr/zmk.uf2 kod_04_right-xiao_ble-zmk.uf2
 
       - name: Build left
+        if: success()
         run: |
           rm -rf build
           west build -s zmk/app -b xiao_ble -- \
             -DSHIELD=kod_04_left \
-            -DSHIELD_ROOT="${GITHUB_WORKSPACE}" \
             -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
 
       - name: Rename left artifact
+        if: success()
         run: cp build/zephyr/zmk.uf2 kod_04_left-xiao_ble-zmk.uf2
 
       - name: Upload artifacts
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: firmware

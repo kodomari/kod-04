@@ -1,5 +1,60 @@
 name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
+
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:stable
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache west modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            modules/
+            tools/
+            zephyr/
+            bootloader/
+            zmk/
+            kb_zmk_ps2_mouse_trackpoint_driver/
+          key: ${{ runner.os }}-west-${{ hashFiles('config/west.yml') }}
+
+      - name: West Init
+        run: west init -l config
+
+      - name: West Update
+        run: west update
+
+      - name: West Zephyr export
+        run: west zephyr-export
+
+      - name: Build right
+        run: |
+          west build -s zmk/app -b xiao_ble -- \
+            -DSHIELD=kod_04_right \
+            -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" \
+            -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}/kb_zmk_ps2_mouse_trackpoint_driver"
+
+      - name: Rename right artifact
+        run: cp build/zephyr/zmk.uf2 kod_04_right-xiao_ble-zmk.uf2
+
+      - name: Build left
+        run: |
+          rm -rf build
+          west build -s zmk/app -b xiao_ble -- \
+            -DSHIELD=kod_04_left \
+            -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+
+      - name: Rename left artifact
+        run: cp build/zephyr/zmk.uf2 kod_04_left-xiao_ble-zmk.uf2
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: |
+            kod_04_right-xiao_ble-zmk.uf2
+            kod_04_left-xiao_ble-zmk.uf2

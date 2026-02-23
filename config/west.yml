@@ -13,11 +13,6 @@ manifest:
       revision: pr-testing/mouse_ps2_module_base
       import: app/west.yml
 
-    - name: kod-04
-      remote: yourgithub
-      revision: main
-      path: modules/kod-04
-
     - name: kb_zmk_ps2_mouse_trackpoint_driver
       remote: infused-kim
       revision: main

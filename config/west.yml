@@ -14,3 +14,5 @@ manifest:
       revision: main
   self:
     path: config
+
+# Cache buster: 2025-02-24

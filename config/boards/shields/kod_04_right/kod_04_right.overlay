@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 kodomari
+ * Copyright (c) 2026 kodomari
  * SPDX-License-Identifier: MIT
  */
 
@@ -10,13 +10,31 @@
 &xiao_serial { status = "disabled"; };
 
 / {
+    /* PS/2 の“物理ドライバ”（GPIO版） */
+    gpio_ps2: gpio_ps2 {
+        compatible = "gpio-ps2";
+        status = "okay";
+        scl-gpios = <&xiao_d 5 GPIO_ACTIVE_HIGH>;  /* CLK */
+        sda-gpios = <&xiao_d 6 GPIO_ACTIVE_HIGH>;  /* DATA */
+    };
+
+    /* ZMK の “input デバイス” 側（←ここが zmk,input-mouse-ps2） */
+    mouse_ps2: mouse_ps2 {
+        compatible = "zmk,input-mouse-ps2";
+        status = "okay";
+        ps2-device = <&gpio_ps2>;
+
+        tp-sensitivity = <255>;
+        tp-inertia = <10>;
+        tp-speed = <255>;
+        tp-press-to-select = <0>;
+    };
+
     ps2_listener: ps2_listener {
         compatible = "zmk,input-listener-ps2";
         device = <&mouse_ps2>;
     };
-};
 
-/ {
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
@@ -39,18 +57,5 @@
           , <&xiao_d 1 GPIO_ACTIVE_HIGH>
           , <&xiao_d 0 GPIO_ACTIVE_HIGH>
           ;
-    };
-
-    // トラックポイント（PS/2インターフェース）
-    mouse_ps2: mouse_ps2 {
-        compatible = "zmk,input-mouse-ps2";
-        status = "okay";
-        scl-gpios = <&xiao_d 5 GPIO_ACTIVE_HIGH>;  // CLK: D5 (P0.05)
-        sda-gpios = <&xiao_d 6 GPIO_ACTIVE_HIGH>;  // DATA: D6 (P1.11)
-        
-        tp-sensitivity = <255>;
-        tp-inertia = <10>;
-        tp-speed = <255>;
-        tp-press-to-select = <0>;
     };
 };

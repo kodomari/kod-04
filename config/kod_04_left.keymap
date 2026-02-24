@@ -6,23 +6,30 @@
       compatible = "zmk,behavior-key-press";
       #binding-cells = <1>;
     };
-
     trans: behavior_transparent {
       compatible = "zmk,behavior-transparent";
       #binding-cells = <0>;
     };
-
     none: behavior_none {
       compatible = "zmk,behavior-none";
       #binding-cells = <0>;
     };
+    // ← ここに追加
+    inc_dec_kp: encoder_inc_dec_kp {
+      compatible = "zmk,behavior-sensor-rotate";
+      #sensor-binding-cells = <2>;
+      bindings = <&kp>, <&kp>;
+    };
   };
-
+  
   keymap {
     compatible = "zmk,keymap";
-    sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+    
+    // マウスホイールスクロール
+    sensor-bindings = <&inc_dec_kp C_AC_SCROLL_UP C_AC_SCROLL_DOWN>;
+    
     default_layer {
-      bindings = <
+      bindings = 
         // row0 (D6): ESC 1 2 3 4 5 カーソルプッシュ
         &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp RET
         // row1 (P0.09): TAB Q W E R T カーソル下

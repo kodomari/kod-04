@@ -43,7 +43,7 @@
 
     // トラックポイント（PS/2インターフェース）
     mouse_ps2: mouse_ps2 {
-        compatible = "zmk,input-ps2";
+        compatible = "zmk,input-mouse-ps2";
         status = "okay";
         scl-gpios = <&xiao_d 5 GPIO_ACTIVE_HIGH>;  // CLK: D5 (P0.05)
         sda-gpios = <&xiao_d 6 GPIO_ACTIVE_HIGH>;  // DATA: D6 (P1.11)

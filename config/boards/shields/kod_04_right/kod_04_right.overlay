@@ -25,7 +25,7 @@
         ps2-device = <&gpio_ps2>;
 
         tp-sensitivity = <255>;
-        tp-inertia = <10>;
+        /* tp-inertia = <10>; */
         tp-speed = <255>;
     };
 

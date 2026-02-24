@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2026 kodomari
+ * Copyright (c) 2024 kodomari
  * SPDX-License-Identifier: MIT
  */
 
@@ -9,7 +9,7 @@
 &xiao_i2c { status = "disabled"; };
 &xiao_serial { status = "disabled"; };
 
-/ {
+ / {
     /* PS/2 の“物理ドライバ”（GPIO版） */
     gpio_ps2: gpio_ps2 {
         compatible = "gpio-ps2";
@@ -18,17 +18,23 @@
         sda-gpios = <&xiao_d 6 GPIO_ACTIVE_HIGH>;  /* DATA */
     };
 
-    /* ZMK の “input デバイス” 側（←ここが zmk,input-mouse-ps2） */
+    /* ZMK の input デバイス（mouse/trackpoint） */
     mouse_ps2: mouse_ps2 {
         compatible = "zmk,input-mouse-ps2";
         status = "okay";
         ps2-device = <&gpio_ps2>;
 
         tp-sensitivity = <255>;
-        /* tp-inertia = <10>; */
-        tp-speed = <255>;
+
+        /* 下は “binding に存在するものだけ” 入れる（必要なら） */
+        /* tp-neg-inertia = <...>; */
+        /* tp-val6-upper-speed = <...>; */
+        /* Press-to-select を有効にするなら boolean はこう書く */
+        /* tp-press-to-select; */
+        /* tp-press-to-select-pressure = <...>; */
     };
 
+    /* input listener（名前が -ps2 になってるのが重要） */
     ps2_listener: ps2_listener {
         compatible = "zmk,input-listener-ps2";
         device = <&mouse_ps2>;
@@ -38,7 +44,6 @@
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
         diode-direction = "col2row";
-
         row-gpios
           = <&xiao_d 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
           , <&xiao_d 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
@@ -46,7 +51,6 @@
           , <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
           , <&xiao_d 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
           ;
-
         col-gpios
           = <&gpio1 5 GPIO_ACTIVE_HIGH>
           , <&xiao_d 8 GPIO_ACTIVE_HIGH>

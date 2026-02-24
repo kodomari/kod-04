@@ -2,7 +2,6 @@
  * Copyright (c) 2024 kodomari
  * SPDX-License-Identifier: MIT
  */
-
 #include "kod_04.dtsi"
 
 &xiao_spi { status = "disabled"; };
@@ -14,7 +13,7 @@
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
         diode-direction = "col2row";
-
+        
         // 5行
         row-gpios
           = <&xiao_d 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // D6
@@ -23,7 +22,7 @@
           , <&gpio0 19  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // P0.19
           , <&gpio0 15  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // P0.15
           ;
-
+        
         // 7列
         col-gpios
           = <&xiao_d 0  GPIO_ACTIVE_HIGH>   // D0
@@ -34,5 +33,20 @@
           , <&xiao_d 5  GPIO_ACTIVE_HIGH>   // D5
           , <&gpio0 10  GPIO_ACTIVE_HIGH>   // P0.10 (NFC2)
           ;
+    };
+
+    // ロータリーエンコーダー
+    left_encoder: encoder_left {
+        compatible = "alps,ec11";
+        a-gpios = <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+        status = "okay";
+    };
+    
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
+        triggers-per-rotation = <20>;
     };
 };

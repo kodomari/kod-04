@@ -1,5 +1,5 @@
 #include <dt-bindings/zmk/keys.h>
-
+#include <behaviors.dtsi>
 / {
   behaviors {
     kp: behavior_key_press {

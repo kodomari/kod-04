@@ -14,8 +14,8 @@
     gpio_ps2: gpio_ps2 {
         compatible = "gpio-ps2";
         status = "okay";
-        scl-gpios = <&xiao_d 5 GPIO_ACTIVE_HIGH>;  /* CLK */
-        sda-gpios = <&xiao_d 6 GPIO_ACTIVE_HIGH>;  /* DATA */
+        scl-gpios = <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;  /* CLK */
+        sda-gpios = <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;  /* DATA */
     };
 
     /* ZMK の input デバイス（mouse/trackpoint） */

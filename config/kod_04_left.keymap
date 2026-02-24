@@ -1,39 +1,19 @@
-#include <dt-bindings/zmk/keys.h>
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
 / {
-  behaviors {
-    kp: behavior_key_press {
-      compatible = "zmk,behavior-key-press";
-      #binding-cells = <1>;
-    };
-    trans: behavior_transparent {
-      compatible = "zmk,behavior-transparent";
-      #binding-cells = <0>;
-    };
-    none: behavior_none {
-      compatible = "zmk,behavior-none";
-      #binding-cells = <0>;
-    };
-  };
-  
   keymap {
     compatible = "zmk,keymap";
     
-    // マウスホイールスクロール
     sensor-bindings = <&inc_dec_kp C_AC_SCROLL_UP C_AC_SCROLL_DOWN>;
     
     default_layer {
-      bindings = <
-        // row0 (D6): ESC 1 2 3 4 5 カーソルプッシュ
+      bindings = 
         &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp RET
-        // row1 (P0.09): TAB Q W E R T カーソル下
         &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &kp DOWN
-        // row2 (P1.01): LCTRL A S D F G カーソル左
         &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G     &kp LEFT
-        // row3 (P0.19): LSHIFT Z X C V B カーソル右
         &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B     &kp RIGHT
-        // row4 (P0.15): FN Win ALT SPACE DEL 6 カーソル上
-        &kp CAPS &kp LGUI  &kp LALT  &kp SPACE &kp DEL   &kp N6   &kp UP
+        &kp CAPS  &kp LGUI  &kp LALT  &kp SPACE &kp DEL   &kp N6    &kp UP
       >;
     };
   };

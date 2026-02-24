@@ -27,7 +27,7 @@
         tp-sensitivity = <255>;
         tp-inertia = <10>;
         tp-speed = <255>;
-ｂ    };
+    };
 
     ps2_listener: ps2_listener {
         compatible = "zmk,input-listener-ps2";

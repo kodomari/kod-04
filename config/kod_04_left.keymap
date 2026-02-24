@@ -20,7 +20,7 @@
 
   keymap {
     compatible = "zmk,keymap";
-
+    sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
     default_layer {
       bindings = <
         // row0 (D6): ESC 1 2 3 4 5 カーソルプッシュ

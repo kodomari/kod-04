@@ -1,14 +1,23 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/mouse.h>
+
 / {
+  behaviors {
+    enc_scroll: enc_scroll {
+      compatible = "zmk,behavior-sensor-rotate-var";
+      #sensor-binding-cells = <2>;
+      bindings = <&msc>, <&msc>;
+    };
+  };
+
   keymap {
     compatible = "zmk,keymap";
-
+    
     default_layer {
-      sensor-bindings = <&inc_dec_msc SCRL_UP SCRL_DOWN>;
-
-      bindings = <
+      sensor-bindings = <&enc_scroll SCRL_UP SCRL_DOWN>;
+      
+      bindings = 
         &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp RET
         &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &kp DOWN
         &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G     &kp LEFT

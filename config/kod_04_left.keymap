@@ -1,12 +1,12 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-
+#include <dt-bindings/zmk/mouse.h>
 / {
   keymap {
     compatible = "zmk,keymap";
 
     default_layer {
-      sensor-bindings = <&inc_dec_kp C_AC_SCROLL_UP C_AC_SCROLL_DOWN>;
+      sensor-bindings = <&inc_dec_msc SCRL_UP SCRL_DOWN>;
 
       bindings = <
         &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp RET

@@ -1,5 +1,7 @@
 config SHIELD_KOD_04_LEFT
     def_bool $(shields_list_contains,kod_04_left)
+    select EC11
+    select EC11_TRIGGER_GLOBAL_THREAD
 
 config SHIELD_KOD_04_RIGHT
     def_bool $(shields_list_contains,kod_04_right)

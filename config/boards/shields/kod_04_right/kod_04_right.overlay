@@ -10,6 +10,13 @@
 &xiao_serial { status = "disabled"; };
 
 / {
+    ps2_listener: ps2_listener {
+        compatible = "zmk,input-listener-ps2";
+        device = <&mouse_ps2>;
+    };
+};
+
+/ {
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;

@@ -29,11 +29,17 @@
 
     default_layer {
       bindings = <
-        /* row0 */ &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7
-        /* row1 */ &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U
-        /* row2 */ &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J
-        /* row3 */ &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M
-        /* row4 */ &kp N8 &kp N9 &kp N0 &kp I  &kp K  &kp L  &kp P
+                // 右手35キー（実際のキー配置）
+                // 行0 (D3): G 7 8 9 0 - =
+                &kp G     &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS &kp EQUAL
+                // 行1 (D9): Y U I O P [ ]
+                &kp Y     &kp U     &kp I     &kp O     &kp P     &kp LBKT  &kp RBKT
+                // 行2 (P1.07): H J K L ; ' ENTER
+                &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp APOS  &kp RET
+                // 行3 (D10): B N M , . / RSHIFT
+                &kp B     &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RSHFT
+                // 行4 (D4): マウス左 マウス中 マウス右 SPACE バックスラッシュ PRNSCN BS
+                &mkp LCLK &mkp MCLK &mkp RCLK &kp SPACE &kp BSLH  &kp PSCRN &kp BSPC
       >;
     };
   };

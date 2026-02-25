@@ -29,7 +29,7 @@
 
     default_layer {
       bindings = <
-                //  右手35キー（実際のキー配置）
+                // 右手35キー（実際のキー配置）
                 // 行0 (D3): G 7 8 9 0 - =
                 &kp G     &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS &kp EQUAL
                 // 行1 (D9): Y U I O P [ ]

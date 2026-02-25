@@ -24,7 +24,7 @@
         status = "okay";
         ps2-device = <&gpio_ps2>;
 
-        tp-sensitivity = <255>;
+        tp-sensitivity = <80>;
 
         /* 下は “binding に存在するものだけ” 入れる（必要なら） */
         /* tp-neg-inertia = <...>; */

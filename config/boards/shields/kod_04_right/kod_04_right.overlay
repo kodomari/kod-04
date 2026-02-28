@@ -26,7 +26,6 @@
 
 tp-sensitivity = <80>;
 tp-inertia = <15>;        // 大きめ（小さなノイズを無視）
-tp-press-to-select = <0>;
 tp-neg-inertia = <6>;     // 方向転換時の追従性
 
         /* 下は “binding に存在するものだけ” 入れる（必要なら） */

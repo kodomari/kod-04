@@ -24,13 +24,14 @@
         status = "okay";
         ps2-device = <&gpio_ps2>;
 
-        tp-sensitivity = <81>;
+tp-sensitivity = <80>;
+tp-inertia = <15>;        // 大きめ（小さなノイズを無視）
+tp-press-to-select = <0>;
+tp-neg-inertia = <6>;     // 方向転換時の追従性
 
         /* 下は “binding に存在するものだけ” 入れる（必要なら） */
-        /* tp-neg-inertia = <...>; */
         /* tp-val6-upper-speed = <...>; */
         /* Press-to-select を有効にするなら boolean はこう書く */
-        /* tp-press-to-select; */
         /* tp-press-to-select-pressure = <...>; */
     };
 

@@ -24,7 +24,7 @@
         status = "okay";
         ps2-device = <&gpio_ps2>;
 
-tp-sensitivity = <80>;
+tp-sensitivity = <60>;
 
         /* 下は “binding に存在するものだけ” 入れる（必要なら） */
         /* tp-val6-upper-speed = <...>; */

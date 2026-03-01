@@ -4,13 +4,6 @@
 
 / {
   behaviors {
-    // エンコーダ用のスクロール動作
-    enc_scroll: enc_scroll {
-      compatible = "zmk,behavior-sensor-rotate-var";
-      #sensor-binding-cells = <2>;
-      bindings = <&msc>, <&msc>;
-    };
-    
     // マウスキープレス
     mkp: behavior_mouse_key_press {
       compatible = "zmk,behavior-mouse-key-press";
@@ -23,17 +16,13 @@
     
     // ========== レイヤー0：デフォルト ==========
     default_layer {
-      // エンコーダ：スクロール
-      sensor-bindings = <&enc_scroll SCRL_UP SCRL_DOWN>;
-      
-      bindings = 
+      bindings = <
         // 左手35キー
         &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp RET
         &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &kp DOWN
         &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G     &kp LEFT
         &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B     &kp RIGHT
         &mo 1     &kp LGUI  &kp LALT  &kp SPACE &kp DEL   &kp N6    &kp UP
-        // ↑ CAPSから&mo 1に変更（レイヤー1へのモーメンタリー）
         
         // 右手35キー
         &kp G     &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS &kp EQUAL
@@ -46,19 +35,15 @@
     
     // ========== レイヤー1：ファンクションキー ==========
     function_layer {
-      // エンコーダ：レイヤー1でもスクロール（変更可能）
-      sensor-bindings = <&enc_scroll SCRL_UP SCRL_DOWN>;
-      
-      bindings = 
-        // 左手35キー（上段のみ変更、他はtrans）
+      bindings = <
+        // 左手35キー
         &kp TILDE &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &kp F6    &trans
-        // 最左下はレイヤーキー自身なのでtrans
         
-        // 右手35キー（上段のみ変更）
+        // 右手35キー
         &trans    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
         &trans    &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &trans

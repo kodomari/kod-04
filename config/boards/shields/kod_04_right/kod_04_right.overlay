@@ -22,7 +22,7 @@
         compatible = "zmk,input-mouse-ps2";
         status = "okay";
         ps2-device = <&gpio_ps2>;
-        tp-sensitivity = <80>;
+        tp-sensitivity = <40>;
     };
     
     /* input listener */

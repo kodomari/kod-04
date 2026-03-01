@@ -2,42 +2,35 @@
  * Copyright (c) 2024 kodomari
  * SPDX-License-Identifier: MIT
  */
-
 #include "kod_04.dtsi"
 
 &xiao_spi { status = "disabled"; };
 &xiao_i2c { status = "disabled"; };
 &xiao_serial { status = "disabled"; };
 
- / {
-    /* PS/2 の“物理ドライバ”（GPIO版） */
+/ {
+    /* PS/2 の"物理ドライバ"（GPIO版） */
     gpio_ps2: gpio_ps2 {
         compatible = "gpio-ps2";
         status = "okay";
         scl-gpios = <&xiao_d 5 GPIO_PULL_UP>;  /* CLK */
         sda-gpios = <&xiao_d 6 GPIO_PULL_UP>;  /* DATA */
     };
-
+    
     /* ZMK の input デバイス（mouse/trackpoint） */
     mouse_ps2: mouse_ps2 {
         compatible = "zmk,input-mouse-ps2";
         status = "okay";
         ps2-device = <&gpio_ps2>;
-
-tp-sensitivity = <80>;
-
-        /* 下は “binding に存在するものだけ” 入れる（必要なら） */
-        /* tp-val6-upper-speed = <...>; */
-        /* Press-to-select を有効にするなら boolean はこう書く */
-        /* tp-press-to-select-pressure = <...>; */
+        tp-sensitivity = <80>;
     };
-
-    /* input listener（名前が -ps2 になってるのが重要） */
+    
+    /* input listener */
     ps2_listener: ps2_listener {
         compatible = "zmk,input-listener-ps2";
         device = <&mouse_ps2>;
     };
-
+    
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
@@ -58,5 +51,30 @@ tp-sensitivity = <80>;
           , <&xiao_d 1 GPIO_ACTIVE_HIGH>
           , <&xiao_d 0 GPIO_ACTIVE_HIGH>
           ;
+    };
+    
+    // ========== 分割キーボード用：70キーtransform ==========
+    chosen {
+        zmk,matrix-transform = &default_transform;
+    };
+    
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <14>;  // 左7列 + 右7列
+        rows = <5>;
+        map = 
+            // 左側35キー（列0-6）
+            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6)
+            RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6)
+            RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6)
+            RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6)
+            RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5) RC(4,6)
+            // 右側35キー（列7-13）
+            RC(0,7) RC(0,8) RC(0,9) RC(0,10) RC(0,11) RC(0,12) RC(0,13)
+            RC(1,7) RC(1,8) RC(1,9) RC(1,10) RC(1,11) RC(1,12) RC(1,13)
+            RC(2,7) RC(2,8) RC(2,9) RC(2,10) RC(2,11) RC(2,12) RC(2,13)
+            RC(3,7) RC(3,8) RC(3,9) RC(3,10) RC(3,11) RC(3,12) RC(3,13)
+            RC(4,7) RC(4,8) RC(4,9) RC(4,10) RC(4,11) RC(4,12) RC(4,13)
+        >;
     };
 };

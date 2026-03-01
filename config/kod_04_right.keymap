@@ -3,18 +3,11 @@
 #include <dt-bindings/zmk/mouse.h>
 
 / {
-  behaviors {
-    // マウスキープレス
-    mkp: behavior_mouse_key_press {
-      compatible = "zmk,behavior-mouse-key-press";
-      #binding-cells = <1>;
-    };
-  };
+  // behaviors セクション全体を削除（mkpは既にZMKに含まれている）
   
   keymap {
     compatible = "zmk,keymap";
     
-    // ========== レイヤー0：デフォルト ==========
     default_layer {
       bindings = <
         // 左手35キー
@@ -33,7 +26,6 @@
       >;
     };
     
-    // ========== レイヤー1：ファンクションキー ==========
     function_layer {
       bindings = <
         // 左手35キー

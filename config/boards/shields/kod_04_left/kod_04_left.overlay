@@ -50,3 +50,7 @@
         triggers-per-rotation = <48>;
     };
 };
+
+&default_transform {
+    col-offset = <0>;  // 左側は列0から開始
+};

@@ -65,7 +65,7 @@
         rst-gpios = <&gpio1 1 GPIO_ACTIVE_LOW>;
 
         /* 最初は最小構成でよいが、今までの値を使うなら残してよい */
-        tp-sensitivity = <40>;
+        tp-sensitivity = <80>;
     };
 
     ps2_listener: ps2_listener {

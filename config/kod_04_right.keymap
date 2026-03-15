@@ -35,6 +35,7 @@
     };
     
     function_layer {
+sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
       bindings = <
         // 左手35キー
         &kp TILDE &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &trans

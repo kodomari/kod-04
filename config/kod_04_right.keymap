@@ -1,6 +1,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/bt.h>
 
 / {
   // behaviors セクション全体を削除（mkpは既にZMKに含まれている）
@@ -30,7 +31,7 @@
       bindings = <
         // 左手35キー
         &kp TILDE &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &trans
-        &trans    &trans    &trans    &trans    &trans    &trans    &trans
+        &bt BT_CLR    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &kp F6    &trans

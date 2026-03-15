@@ -4,12 +4,19 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
-  // behaviors セクション全体を削除（mkpは既にZMKに含まれている）
+  behaviors {
+    enc_scroll: enc_scroll {
+      compatible = "zmk,behavior-sensor-rotate-var";
+      #sensor-binding-cells = <2>;
+      bindings = <&msc>, <&msc>;
+    };
+  };
   
   keymap {
     compatible = "zmk,keymap";
     
     default_layer {
+      sensor-bindings = <&enc_scroll SCRL_UP SCRL_DOWN>;
       bindings = <
         // 左手35キー
         &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp RET

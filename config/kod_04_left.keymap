@@ -4,18 +4,18 @@
 
 / {
   behaviors {
-    enc_scroll: enc_scroll {
-      compatible = "zmk,behavior-sensor-rotate-var";
-      #sensor-binding-cells = <2>;
-      bindings = <&msc>, <&msc>;
+    enc_test: enc_test {
+      compatible = "zmk,behavior-sensor-rotate";
+      #sensor-binding-cells = <0>;
+      bindings = <&kp PG_UP>, <&kp PG_DN>;
     };
   };
 
   keymap {
     compatible = "zmk,keymap";
-    
+
     default_layer {
-      sensor-bindings = <&enc_scroll SCRL_UP SCRL_DOWN>;
+      sensor-bindings = <&enc_test>;
       
       bindings = <
         // 左手35キー

@@ -50,10 +50,7 @@
         triggers-per-rotation = <24>;
     };
 };
-encoder_listener: encoder_listener {
-    compatible = "zmk,input-listener-sensor";
-    device = <&left_encoder>;
-};
+
 &default_transform {
     col-offset = <0>;  // 左側は列0から開始
 };

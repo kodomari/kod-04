@@ -5,11 +5,10 @@
 
 / {
 behaviors {
-  scroll_encoder: scroll_encoder {
-    compatible = "zmk,behavior-sensor-rotate";
+  enc_scroll: enc_scroll {
+    compatible = "zmk,behavior-sensor-rotate-var";
     #sensor-binding-cells = <2>;
-    bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-    tap-ms = <60>;
+    bindings = <&msc>, <&msc>;
   };
 };
   
@@ -17,7 +16,7 @@ behaviors {
     compatible = "zmk,keymap";
     
     default_layer {
-  sensor-bindings = <&scroll_encoder>;
+sensor-bindings = <&enc_scroll SCRL_UP SCRL_DOWN>;
       bindings = <
         // 左手35キー
         &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp RET

@@ -3,3 +3,7 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   matrix:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+- name: Check zephyr.dts
+  run: |
+    find /tmp -name "zephyr.dts" 2>/dev/null | head -5
+    find /tmp -name "zephyr.dts" 2>/dev/null | xargs grep -l "msc" 2>/dev/null | xargs grep "msc_input_listener" || echo "NOT FOUND"

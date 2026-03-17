@@ -72,7 +72,10 @@
         compatible = "zmk,input-listener";
         device = <&mouse_ps2>;
     };
-
+    msc_input_listener: msc_input_listener {
+        compatible = "zmk,input-listener";
+        device = <&msc>;
+    };
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;

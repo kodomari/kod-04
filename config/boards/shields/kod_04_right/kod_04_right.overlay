@@ -69,7 +69,7 @@
     };
 
     ps2_listener: ps2_listener {
-        compatible = "zmk,input-listener-ps2";
+        compatible = "zmk,input-listener";
         device = <&mouse_ps2>;
     };
 

@@ -34,7 +34,9 @@
           , <&gpio0 10  GPIO_ACTIVE_HIGH>   // P0.10 (NFC2)
           ;
     };
-
+&left_encoder {
+    status = "okay";
+};
 };
 
 &default_transform {

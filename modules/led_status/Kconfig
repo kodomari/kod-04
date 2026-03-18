@@ -1,0 +1,4 @@
+config ZMK_LED_STATUS
+    bool "BLE status LED indicator"
+    default y
+    depends on ZMK_BLE

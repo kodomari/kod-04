@@ -1,5 +1,7 @@
 include:
   - board: xiao_ble//zmk
     shield: kod_04_left
+    cmake-args: -DZMK_EXTRA_MODULES=${ZMK_CONFIG}/../modules/led_status
   - board: xiao_ble//zmk
     shield: kod_04_right
+    cmake-args: -DZMK_EXTRA_MODULES=${ZMK_CONFIG}/../modules/led_status

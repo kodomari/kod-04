@@ -6,11 +6,24 @@
 #include <dt-bindings/zmk/pointing.h>
 / {
     behaviors {
+        scrl_down: scrl_down {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <20>;
+            bindings = <&msc SCRL_DOWN>;
+        };
+        scrl_up: scrl_up {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <20>;
+            bindings = <&msc SCRL_UP>;
+        };
         scroll_encoder: scroll_encoder {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-            // tap-ms は削除
+            bindings = <&scrl_down>, <&scrl_up>;
         };
     };
   keymap {

@@ -50,7 +50,7 @@
     };
     
     function_layer {
-sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
       bindings = <
         // 左手35キー
         &kp TILDE &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &trans
@@ -66,6 +66,15 @@ sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         &trans    &trans    &trans    &trans    &trans    &trans    &trans
         &trans    &trans    &trans    &trans    &trans    &trans    &trans
       >;
+    };
+    combos {
+        compatible = "zmk,combos";
+
+        combo_right_boot {
+            timeout-ms = <50>;
+            key-positions = <41 68>;
+            bindings = <&bootloader>;
+        };
     };
   };
 };

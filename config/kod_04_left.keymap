@@ -11,7 +11,15 @@
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
         tap-ms = <60>;
     };
+   combos {
+     compatible = "zmk,combos";
 
+     combo_left_boot {
+       timeout-ms = <50>;
+       key-positions = <0 32>;
+       bindings = <&bootloader>;
+     };
+  };
   behaviors {
     enc_test: enc_test {
       compatible = "zmk,behavior-sensor-rotate";

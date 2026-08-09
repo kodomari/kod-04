@@ -4,6 +4,7 @@ Split Wireless keyboard with trackpoint (SK8707-01)
 
 Based on Auto-KDK design
 
+
 ## Features
 
 - 80 keys (40 per side)
